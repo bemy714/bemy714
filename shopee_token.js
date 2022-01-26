@@ -1,20 +1,10 @@
-if ($request.headers['Cookie']) {
-    const cookie = $request.headers['Cookie'];
-    const shopee_token = cookie.split('shopee_token=')[1].split(';')[0];
-    const SPC_EC = cookie.split('SPC_EC=')[1].split(';')[0];
-    const cstfToken = cookie.split('csrftoken=')[1].split(';')[0];
+#!name=蝦皮自動簽到
+#!desc=每天早上自動簽到 & 開寶箱。先到「我的」→「邀請我的朋友」取得 token。 v20220103
 
-    const saveCookie = $persistentStore.write(cookie, "CookieSP");
-    const saveToken = $persistentStore.write(shopee_token, "ShopeeToken");
-    const saveSPC_EC = $persistentStore.write(SPC_EC, "SPC_EC");
-    const saveCsrf = $persistentStore.write(cstfToken, "CSRFTokenSP");
+[Script]
+cron "0 0 * * *" script-path=https://kinta.ma/surge/scripts/shopee_checkin.js, wake-system=1, timeout=30
+cron "0 0 * * *" script-path=https://kinta.ma/surge/scripts/shopee_luckydraw.js, wake-system=1, timeout=30
+shopee_token.js = type=http-request,pattern=^https:\/\/mall\.shopee\.tw\/api\/v4\/microsite\/campaign_site_page,script-path=https://kinta.ma/surge/scripts/shopee_token.js,script-update-interval=-1
 
-    if (!(saveCookie && saveToken && saveCsrf && saveSPC_EC)) {
-        $notification.post("蝦皮 Cookie 保存錯誤‼️", "", "請重新登入")
-    } else {
-        $notification.post("蝦皮 Cookie 保存成功🎉", "", "")
-    }
-} else {
-    $notification.post("蝦皮 Cookie 保存失敗‼️", "", "請重新登入")
-}
-$done({}
+[MITM]
+hostname = %APPEND% mall.shopee.tw
