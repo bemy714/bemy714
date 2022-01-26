@@ -3,7 +3,7 @@
 
 [Script]
 cron "0 0* * *" script-path=https://raw.githubusercontent.com/bemy714/bemy714/main/shopee_checkin.js, wake-system=1, timeout=30
-cron 1 0* * *" script-path=https://raw.githubusercontent.com/bemy714/bemy714/main/shopee_luckydraw.js, wake-system=1, timeout=30
+cron "1 0* * *" script-path=https://raw.githubusercontent.com/bemy714/bemy714/main/shopee_luckydraw.js, wake-system=1, timeout=30
 shopee_token.js = type=http-request,pattern=^https:\/\/mall\.shopee\.tw\/api\/v4\/microsite\/campaign_site_page,script-path=https://raw.githubusercontent.com/bemy714/bemy714/main/shopee_token.js,script-update-interval=-1
 
 [MITM]
