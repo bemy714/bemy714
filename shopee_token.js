@@ -17,4 +17,4 @@ if ($request.headers['Cookie']) {
 } else {
     $notification.post("蝦皮 Cookie 保存失敗‼️", "", "請重新登入")
 }
-$done({})shopee_token.js
+$done({}
