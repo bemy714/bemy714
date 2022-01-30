@@ -1,16 +1,16 @@
 var shopeeluckydrawUrl = {
-    url: 'https://games.shopee.tw/luckydraw/api/v1/lucky/event/9e1941bb20a51f3',
-    headers: {
-        'Cookie': $persistentStore.read("CookieSP") + ';SPC_EC=' + $persistentStore.read("SPC_EC") + ';',
-        'X-CSRFToken': $persistentStore.read("CSRFTokenSP"),
-    },
-    body: {
-        "request_id": (Math.random() * 10 ** 20).toFixed(0).substring(0, 16),
-        "app_id": "E9VFyxwmtgjnCR8uhL",
-        "activity_code": "e37b7dec5976a29c",
-        "source": 0
-    },
-}
+  url: "https://games.shopee.tw/luckydraw/api/v1/lucky/event/9e1941bb20a51f73",
+  headers: {
+      'Cookie': $persistentStore.read("CookieSP") + ';SPC_EC=' + $persistentStore.read("SPC_EC") + ';',
+      'X-CSRFToken': $persistentStore.read("CSRFTokenSP"),
+  },
+  body: {
+    request_id: (Math.random() * 10 ** 20).toFixed(0).substring(0, 16),
+    app_id: "E9VFyxwmtgjnCR8uhL",
+    activity_code: "e37b7dec5976a29c",
+    source: 0,
+  },
+};
 
 $httpClient.post(shopeeluckydrawUrl, function (error, response, data) {
     if (error) {
@@ -41,4 +41,4 @@ $httpClient.post(shopeeluckydrawUrl, function (error, response, data) {
             $done();
         }
     }
-});
+})
