@@ -1,5 +1,5 @@
 var shopeeluckydrawUrl = {
-    url: 'https://games.shopee.tw/luckydraw/api/v1/lucky/event/9e1941bb20a51f',
+    url: 'https://games.shopee.tw/luckydraw/api/v1/lucky/event/9e1941bb20a51f3',
     headers: {
         'Cookie': $persistentStore.read("CookieSP") + ';SPC_EC=' + $persistentStore.read("SPC_EC") + ';',
         'X-CSRFToken': $persistentStore.read("CSRFTokenSP"),
